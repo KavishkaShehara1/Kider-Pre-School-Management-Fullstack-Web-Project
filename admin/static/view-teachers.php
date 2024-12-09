@@ -31,38 +31,41 @@ $result = mysqli_query($data, $sql);
               <h5 class="card-title mb-0">Teacher List</h5>
             </div>
             <div class="card-body">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+              <!-- Add table-responsive for responsive design -->
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="table-light">
                     <tr>
-                      <td><?php echo $row['id']; ?></td>
-                      <td><?php echo $row['name']; ?></td>
-                      <td><?php echo $row['description']; ?></td>
-                      <td>
-                        <img src="<?php echo $row['image']; ?>" alt="Teacher Image" style="width: 50px; height: 50px; object-fit: cover;">
-                      </td>
-                      <td>
-                        <a href="update-teacher.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="delete-teacher.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
-                      </td>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Image</th>
+                      <th>Actions</th>
                     </tr>
-                  <?php } ?>
-                </tbody>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                      <tr>
+                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['description']; ?></td>
+                        <td>
+                          <img src="<?php echo $row['image']; ?>" alt="Teacher Image" class="img-fluid" style="width: 50px; height: 50px; object-fit: cover;">
+                        </td>
+                        <td>
+                          <a href="update-teacher.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                          <a href="delete-teacher.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                        </td>
+                      </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </main>
+
 
       <footer class="footer">
         <div class="container-fluid">

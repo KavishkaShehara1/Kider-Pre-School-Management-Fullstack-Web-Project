@@ -50,6 +50,12 @@
               <i class="align-middle" data-feather="book"></i> <span class="align-middle">Contact Message</span>
             </a>
 					</li>
+
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="view-teacher-application.php">
+              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Teachers Applications</span>
+            </a>
+					</li>
 				</ul>
 			</div>
 		</nav>
