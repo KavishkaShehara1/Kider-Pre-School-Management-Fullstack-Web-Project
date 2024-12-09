@@ -74,6 +74,7 @@ $result2 = mysqli_query($conn, $sql2);
                             <a href="appointment.php" class="dropdown-item">Make Appointment</a>
                             <a href="testimonial.php" class="dropdown-item">Testimonial</a>
                             <a href="404.php" class="dropdown-item">404 Error</a>
+                            <a href="login.php" class="dropdown-item">Sign In</a>
                         </div>
                     </div>
                     <a href="contact.php" class="nav-item nav-link">Contact Us</a>
