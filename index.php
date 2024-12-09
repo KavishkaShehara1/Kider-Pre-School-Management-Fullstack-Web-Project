@@ -11,7 +11,10 @@ if (isset($_SESSION['message'])) {
 }
 
 // Show Courses
-$sql = "SELECT * from courses";
+$sql = "SELECT courses.id, courses.name, teacher.name AS teacher_name, teacher.image AS teacher_image, 
+        courses.price, courses.age, courses.time, courses.capacity, courses.image 
+        FROM courses
+        LEFT JOIN teacher ON courses.teacher = teacher.id";
 $result = mysqli_query($conn, $sql);
 
 // Show teacher
@@ -291,9 +294,9 @@ $result2 = mysqli_query($conn, $sql2);
                                     <a class="d-block text-center h3 mt-3 mb-4" href=""><?php echo $row['name'] ?></a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
-                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <img class="rounded-circle flex-shrink-0" src="admin/images/<?php echo $row['teacher_image'] ?>" alt="" style="width: 45px; height: 45px;">
                                             <div class="ms-3">
-                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <h6 class="text-primary mb-1"><?php echo $row['teacher_name'] ?></h6>
                                                 <small>Teacher</small>
                                             </div>
                                         </div>
