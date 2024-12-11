@@ -6,6 +6,8 @@ $sql = "SELECT * FROM teacher_applications";
 $result = mysqli_query($data, $sql);
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +16,8 @@ $result = mysqli_query($data, $sql);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>View Teachers Applications</title>
-  <link href="css/app.css" rel="stylesheet">
-  <!-- Add Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,7 +34,12 @@ $result = mysqli_query($data, $sql);
               <h5 class="card-title mb-0">Applications List</h5>
             </div>
             <div class="card-body">
-              <!-- Make the table responsive -->
+
+              <!-- Search Bar -->
+              <div class="mb-3">
+                <input id="searchInput" type="text" class="form-control" placeholder="Search courses by name, teacher, or price">
+              </div>
+
               <div class="table-responsive">
                 <table class="table table-bordered">
                   <thead class="table-light">
@@ -97,8 +103,30 @@ $result = mysqli_query($data, $sql);
     </div>
   </div>
 
-  <!-- Add Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // JavaScript to filter table rows
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#coursesTable tbody tr');
+
+      rows.forEach(row => {
+        const courseName = row.cells[1].textContent.toLowerCase();
+        const teacherName = row.cells[2].textContent.toLowerCase();
+        const price = row.cells[3].textContent.toLowerCase();
+
+        if (
+          courseName.includes(filter) ||
+          teacherName.includes(filter) ||
+          price.includes(filter)
+        ) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  </script>
   <script src="js/app.js"></script>
 </body>
 
